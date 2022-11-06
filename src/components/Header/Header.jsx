@@ -9,3 +9,14 @@ function Header() {
             <div className="header__logo">
                 <img src={logo} alt="BrainFlix logo" className="header__logo-img"></img>
             </div>
+            <div className='header__middle'>
+                <input type="text" className="header__search" placeholder='Search'></input>
+                <div className="header__profile header__profile--mobile"></div>
+            </div>
+            <button className="button header__btn">
+                <img src={upload} alt="upload icon" className='button__icon'></img>
+                <span className="button__text">UPLOAD</span>
+    );
+}
+
+export default Header;
