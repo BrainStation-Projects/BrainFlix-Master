@@ -2,7 +2,10 @@ import './App.scss';
 import Header from './components/Header/Header';
 import Video from './components/Video/Video';
 import VideoInfo from './components/VideoInfo/VideoInfo';
+import CommentsList from './components/CommentsList/CommentsList';
 import videoList from './data/video-details.json';
+import { useState } from 'react';
+
 
 
 function App() {
@@ -16,6 +19,7 @@ function App() {
       <div className='container'>
         <section className='video'>
           <VideoInfo currentVideo={currentVideo} />
+          <CommentsList currentVideo={currentVideo} />
         </section>
       </div>
     </div>
