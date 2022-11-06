@@ -16,6 +16,9 @@ function Header() {
             <button className="button header__btn">
                 <img src={upload} alt="upload icon" className='button__icon'></img>
                 <span className="button__text">UPLOAD</span>
+            </button>
+            <div className="header__profile header__profile--tablet"></div>
+        </header>
     );
 }
 
