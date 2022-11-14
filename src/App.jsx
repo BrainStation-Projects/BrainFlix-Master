@@ -1,35 +1,25 @@
 import './App.scss';
 import Header from './components/Header/Header';
-import Video from './components/Video/Video';
-import VideoInfo from './components/VideoInfo/VideoInfo';
-import CommentsList from './components/CommentsList/CommentsList';
-import RecommendedList from './components/RecommendedList/RecommendedList';
-import videoList from './data/video-details.json';
-import { useState } from 'react';
-
+import Home from './pages/Home';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import VideoUploadPage from './pages/VideoUploadPage';
 
 
 function App() {
 
-  const [currentVideo, setCurrentVideo] = useState(videoList[0])
-
-  const handleClick = (title) => {
-    const foundVideo = videoList.find((video) => video.title === title)
-    setCurrentVideo(foundVideo)
-  }
 
   return (
-    <div className="App">
-      <Header />
-      <Video currentVideo={currentVideo} />
-      <div className='container'>
-        <section className='video'>
-          <VideoInfo currentVideo={currentVideo} />
-          <CommentsList currentVideo={currentVideo} />
-        </section>
-        <RecommendedList videoList={videoList.filter((video) => video.title !== currentVideo.title)} handleVideoClick={handleClick} />
+    <BrowserRouter>
+      <div className="App">
+        <Header />
+        <Routes>
+          <Route path='/' element={<Home />} />
+          <Route path='/videos/:id' element={<Home />} />
+          <Route path='upload' element={<VideoUploadPage />} />
+          <Route path='*' element={<h2>Oops! Page not found.</h2>} />
+        </Routes>
       </div>
-    </div>
+    </BrowserRouter>
   );
 }
 

@@ -21,6 +21,11 @@
 
 
     &__logo {
+
+        &>a {
+            padding: 0;
+        }
+
         @include tablet {
             flex-grow: 1;
         }
@@ -77,6 +82,16 @@
             &--tablet {
                 display: flex;
             }
+        }
+    }
+
+    &__btn-link {
+        width: 100%;
+        padding: 0;
+        text-decoration: none;
+
+        @include tablet {
+            max-width: 150px;
         }
     }
 }

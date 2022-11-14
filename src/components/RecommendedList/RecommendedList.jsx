@@ -1,13 +1,13 @@
 import './RecommendedList.scss';
 import RecommendedVideo from '../RecommendedVideo/RecommendedVideo';
 
-function RecommendedList(props) {
+function RecommendedList({ videoList }) {
 
     return (
         <section className="recommended">
             <p className="recommended__title">NEXT VIDEOS</p>
-            {props.videoList.map((video) => {
-                return <RecommendedVideo key={video.id} url={video.image} title={video.title} author={video.channel} handleVideoClick={props.handleVideoClick} />
+            {videoList.map((video) => {
+                return <RecommendedVideo key={video.id} id={video.id} image={video.image} title={video.title} channel={video.channel} />
             })}
         </section>
     );
