@@ -3,8 +3,10 @@ import thumbnail from '../../assets/images/Upload-video-preview.jpg';
 import publishIcon from '../../assets/icons/publish.svg';
 import { useNavigate } from 'react-router-dom';
 import { useState } from 'react';
+import axios from 'axios';
 
-function UploadForm() {
+function UploadForm({ API_URL }) {
+
     const navigate = useNavigate();
     const [title, setTitle] = useState("");
     const [description, setDescription] = useState("");
@@ -17,9 +19,33 @@ function UploadForm() {
         setDescription(event.target.value);
     }
 
+    const isFormValid = () => {
+        if (!title || !description) {
+            return false;
+        }
+        return true;
+    }
+
+
     const handleSubmit = (event) => {
         event.preventDefault();
-        console.log(`Form submitted. Title: ${title} Description: ${description}`);
+
+        if (isFormValid()) {
+            let videoObject = {
+                title: title,
+                description: description
+            }
+
+            axios.post(`${API_URL}/videos`, videoObject)
+                .then(response => {
+                    console.log(response)
+                })
+                .catch(error => {
+                    console.log(error)
+                })
+        } else {
+            console.log("Error uploading video")
+        }
 
         event.target.reset();
     }
@@ -27,6 +53,7 @@ function UploadForm() {
     const handleCancelBtn = () => {
         navigate('/');
     }
+
     return (
         <form onSubmit={handleSubmit} className="upload__form">
             <div className="upload__wrapper">

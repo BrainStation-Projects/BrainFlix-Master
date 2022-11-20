@@ -7,34 +7,30 @@ import axios from "axios";
 import { useParams } from 'react-router-dom';
 
 
-function Home() {
+function Home({ API_URL }) {
     const { id } = useParams();
     const [currentVideo, setCurrentVideo] = useState(null);
     const [videoList, setVideoList] = useState([]);
     const [comments, setComments] = useState([]);
-    const API_URL = "https://project-2-api.herokuapp.com";
-    const API_Key = "?api_key=810f0ef8-07eb-408e-a0e6-3550f5618867";
-
-    console.log(id)
 
     useEffect(() => {
-        axios.get(`${API_URL}/videos${API_Key}`)
+        axios.get(`${API_URL}/videos`)
             .then(response => {
 
                 setVideoList(response.data);
             })
-    }, []);
+    }, [API_URL]);
 
     useEffect(() => {
         let videoId = id || videoList[0]?.id;
 
         if (videoId) {
-            axios.get(`${API_URL}/videos/${videoId}${API_Key}`)
+            axios.get(`${API_URL}/videos/${videoId}`)
                 .then(response => {
                     setCurrentVideo(response.data);
                 })
         }
-    }, [id, videoList, comments]);
+    }, [id, videoList, comments, API_URL]);
 
     return (
         <>
@@ -42,7 +38,7 @@ function Home() {
             <div className='container'>
                 <section className='video'>
                     {currentVideo && <VideoInfo currentVideo={currentVideo} />}
-                    {currentVideo && <CommentsList currentVideo={currentVideo} API_URL={API_URL} API_Key={API_Key} setComments={setComments} />}
+                    {currentVideo && <CommentsList currentVideo={currentVideo} API_URL={API_URL} setComments={setComments} />}
                 </section>
                 {videoList && currentVideo && <RecommendedList videoList={videoList?.filter((video) => video.title !== currentVideo.title)} />}
             </div>

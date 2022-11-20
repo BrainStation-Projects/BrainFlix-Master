@@ -7,15 +7,16 @@ import VideoUploadPage from './pages/VideoUploadPage';
 
 function App() {
 
+  const API_URL = "http://localhost:8081";
 
   return (
     <BrowserRouter>
       <div className="App">
         <Header />
         <Routes>
-          <Route path='/' element={<Home />} />
-          <Route path='/videos/:id' element={<Home />} />
-          <Route path='upload' element={<VideoUploadPage />} />
+          <Route path='/' element={<Home API_URL={API_URL} />} />
+          <Route path='/videos/:id' element={<Home API_URL={API_URL} />} />
+          <Route path='upload' element={<VideoUploadPage API_URL={API_URL} />} />
           <Route path='*' element={<h2>Oops! Page not found.</h2>} />
         </Routes>
       </div>

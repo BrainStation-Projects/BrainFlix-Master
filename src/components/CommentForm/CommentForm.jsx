@@ -4,7 +4,7 @@ import { useState } from 'react';
 import axios from 'axios';
 
 
-function CommentForm({ currentVideo, API_URL, API_Key, setComments }) {
+function CommentForm({ currentVideo, API_URL, setComments }) {
 
     const user = "Mohan Muruge"
     const [comment, setComment] = useState("");
@@ -23,7 +23,7 @@ function CommentForm({ currentVideo, API_URL, API_Key, setComments }) {
 
     const handleSubmit = (event) => {
         event.preventDefault();
-        event.target.reset();
+
 
         if (isFormValid()) {
             let commentObject = {
@@ -33,10 +33,10 @@ function CommentForm({ currentVideo, API_URL, API_Key, setComments }) {
 
             let videoId = currentVideo.id;
 
-            axios.post(`${API_URL}/videos/${videoId}/comments${API_Key}`, commentObject)
+            axios.post(`${API_URL}/videos/${videoId}/comments`, commentObject)
                 .then(response => {
                     console.log(response)
-                    return axios.get(`${API_URL}/videos/${videoId}${API_Key}`)
+                    return axios.get(`${API_URL}/videos/${videoId}`)
                 })
                 .then(response => {
                     setComments(response.data.comments)
@@ -47,6 +47,8 @@ function CommentForm({ currentVideo, API_URL, API_Key, setComments }) {
         } else {
             console.log("Error submitting the comment")
         }
+
+        event.target.reset();
     }
 
 

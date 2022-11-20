@@ -22,6 +22,12 @@
         }
     }
 
+    &__left {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
     &__profile {
         border-radius: 50%;
         background-color: $scMercury;
@@ -34,6 +40,13 @@
             height: 40px;
             width: 40px;
         }
+    }
+
+    &__icon {
+        height: 15px;
+        width: 15px;
+        color: $scMercury;
+        cursor: pointer;
     }
 
     &__textwrapper {

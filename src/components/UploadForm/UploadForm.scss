@@ -50,7 +50,7 @@
         @include desktop {
             flex-direction: row;
 
-            gap: 2rem;
+            gap: 3rem;
         }
     }
 
@@ -71,8 +71,8 @@
     &__img-container {
         border-radius: 4px;
         background-color: $scMercury;
-        width: auto;
-        height: 183px;
+        width: 404px;
+        height: 215px;
 
         @include tablet {
             width: 375px;
@@ -84,7 +84,8 @@
         position: relative;
         border-radius: 4px;
         z-index: 1;
-        width: 100%;
+        width: auto;
+        max-height: 215px;
         pointer-events: none;
     }
 
