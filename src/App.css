@@ -1,0 +1,52 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+}
+
+.form-field-style {
+  min-height: 36px;
+  width: 100%;
+  border-radius: 4px;
+  padding: 8px;
+  border: 1px solid #E1E1E1;
+}
+
+.button {
+  height: 40px;
+  width: 100%;
+  border-radius: 4px;
+  background-color: #0095FF;
+  color: #FFFFFF;
+  border: none;
+  display: flex;
+  align-items: center;
+}
+.button__text {
+  flex-grow: 2;
+  font-weight: 700;
+}
+.button:hover {
+  background-color: #0065AD;
+  cursor: pointer;
+}
+@media only screen and (min-width: 768px) {
+  .button {
+    max-width: 150px;
+  }
+  .button--bio {
+    max-width: 150px;
+    padding: 0 32px;
+    align-self: flex-end;
+  }
+}
+
+@media only screen and (min-width: 1280px) {
+  .container {
+    display: flex;
+    align-items: flex-start;
+    padding-right: 8rem;
+  }
+}/*# sourceMappingURL=App.css.map */
